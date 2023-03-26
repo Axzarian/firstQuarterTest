@@ -12,33 +12,69 @@ int PromptNumber(string message)
     return result;
 }
 
-string [] CreateArray()
+string[] CreateArray()
 {
     int size = PromptNumber("Какого размера массив вы хотите создать: ");
-    string [] array = new string [size];
+    string[] array = new string[size];
     return array;
 }
 
-string [] FillArray(string [] array)
+string[] FillArray(string[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = PromptText($"Введите значение {i+1} элемента: ");        
+        array[i] = PromptText($"Введите значение {i + 1} элемента: ");
     }
     return array;
 }
 
-
-
-
-
-
-
-
-string [] arr = CreateArray();
-FillArray(arr);
-
-foreach (var item in arr)
+int CountElementsShorterThanFour(string[] array)
 {
-    System.Console.WriteLine(item);
+    int count = 0;
+    foreach (string el in array)
+    {
+        if (el.Length < 4)
+        {
+            count++;
+        }
+    }
+    return count;
 }
+
+string[] RewriteArray(string[] array)
+{
+    string[] massif = new string[CountElementsShorterThanFour(array)];
+    for (int i = 0, j = 0; i < array.Length; i++)
+    {
+        if (array[i].Length < 4)
+        {
+            massif[j] = array[i];
+            j++;
+        }
+    }
+    return massif;
+}
+
+void PrintArray(string[] array)
+{
+    Console.Write("Ваш массив: ");
+    foreach (var item in array)
+    {
+        System.Console.Write($"{item}\t");
+    }
+}
+
+void TaskSolution()
+{
+    string[] arr = CreateArray();
+    FillArray(arr);
+    PrintArray(arr);
+
+    System.Console.WriteLine();
+
+    string[] newArray = RewriteArray(arr);
+    System.Console.WriteLine();
+    PrintArray(newArray);
+}
+
+TaskSolution();
