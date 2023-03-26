@@ -22,7 +22,12 @@ To do list:
 Obviously during this journey I have to use GIT.
 
 **As you can see I used GitHub :)**
+<br>
+<br>
 
+**Here you can see the flowchart**
+
+![flowchart](flowchart.png)
 
 
 
